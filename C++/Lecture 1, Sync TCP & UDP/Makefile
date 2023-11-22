@@ -1,15 +1,23 @@
 CC=g++
 CFLAGS=-I.
 
-all: tcp
+all: tcp udp
 
-tcp: tcp_server tcp_client
+tcp: SyncTCPServer SyncTCPClient
 
-tcp_server: TCP/SyncTcpServer.cpp
+udp: SyncUDPServer SyncUDPClient
+
+SyncTCPServer: TCP/SyncTcpServer.cpp
 	$(CC) -o SyncTcpServer TCP/SyncTcpServer.cpp $(CFLAGS)
 
-tcp_client: TCP/SyncTcpClient.cpp
+SyncTCPClient: TCP/SyncTcpClient.cpp
 	$(CC) -o SyncTcpClient TCP/SyncTcpClient.cpp $(CFLAGS)
 
+SyncUDPServer: UDP/SyncUdpServer.cpp
+	$(CC) -o SyncUdpServer UDP/SyncUdpServer.cpp $(CFLAGS)
+
+SyncUDPClient: UDP/SyncUdpClient.cpp
+	$(CC) -o SyncUdpClient UDP/SyncUdpClient.cpp $(CFLAGS)
+
 clean:
-	rm -f SyncTcpServer SyncTcpClient
+	rm -f SyncTcpServer SyncTcpClient SyncUdpServer SyncUdpClient

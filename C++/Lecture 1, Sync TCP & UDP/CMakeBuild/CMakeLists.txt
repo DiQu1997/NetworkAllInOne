@@ -1,8 +1,14 @@
 cmake_minimum_required(VERSION 3.10)
-project(SyncTCP)
+project(SyncNetwork)
 
 # TCP Server
-add_executable(tcp_server ../TCP/SyncTcpServer.cpp)
+add_executable(SyncTCPServer ../TCP/SyncTcpServer.cpp)
 
 # TCP Client
-add_executable(tcp_client ../TCP/SyncTcpClient.cpp)
+add_executable(SyncTCPClient ../TCP/SyncTcpClient.cpp)
+
+# UDP Server
+add_executable(SyncUDPServer ../UDP/SyncUdpServer.cpp)
+
+# UDP Client
+add_executable(SyncUDPClient ../UDP/SyncUdpClient.cpp)
