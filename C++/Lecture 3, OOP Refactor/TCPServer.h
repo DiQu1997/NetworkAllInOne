@@ -1,4 +1,11 @@
 #include <vector>
+#include <iostream>
+#include <string>
+#include <cstring>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <unistd.h>
+#include <fcntl.h>
 /*
  * A general class for a TCP server
  * It includes:
@@ -20,6 +27,6 @@ public:
     int send(int fd, const char* buffer, int length);
 
 private:
-    int server_socket;
-    std::vector<int> client_sockets;
+    int serverSocket_;
+    std::vector<int> clientSockets_;
 };
