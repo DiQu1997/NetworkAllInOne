@@ -10,6 +10,9 @@
 
 #include <poll.h>
 #include <sys/epoll.h>
+
+#pragma once
+
 /*
  * A general class for a TCP server
  * It includes:
@@ -53,10 +56,12 @@ public:
     int server_bind(int domain, int port);
     int server_listen(int backlog);
 
+    // Handler functions
     int server_accept();
     int sever_select();
     int server_poll();
     int server_epoll(int max_events);
+
     int server_send(int fd, const char* buffer, int length);
 
 private:

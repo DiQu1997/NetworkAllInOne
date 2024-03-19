@@ -23,6 +23,8 @@ int TCPServer::server_bind(int domain, int port) {
         std::cerr << "Failed to bind the socket to the address." << std::endl;
         return -1;
     }
+
+    return 0;
 }
 
 int TCPServer::server_listen(int backlog) {
@@ -30,6 +32,8 @@ int TCPServer::server_listen(int backlog) {
         std::cerr << "Failed to listen for incoming connections." << std::endl;
         return -1;
     }
+
+    return 0;
 }
 
 int TCPServer::server_accept() {
@@ -228,5 +232,5 @@ int TCPServer::server_epoll(const int max_events) {
 }
 
 int TCPServer::server_send(int fd, const char* buffer, int length) {
-    send(fd, buffer, length, 0);
+    return send(fd, buffer, length, 0);
 } 
