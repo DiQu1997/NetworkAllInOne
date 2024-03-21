@@ -11,7 +11,8 @@
 #include <poll.h>
 #include <sys/epoll.h>
 
-#pragma once
+#ifndef TCPSERVER_H
+#define TCPSERVER_H
 
 /*
  * A general class for a TCP server
@@ -31,7 +32,9 @@ enum ServerType {
     ASYNC_EPOLL
 };
 
-int set_socket_blocking(int sockfd, bool blocking) {
+// Without inline, the function will be defined in every translation unit that includes the header
+// This will violate the one definition rule and cause a linker error
+inline int set_socket_blocking(int sockfd, bool blocking) {
     int flags = fcntl(sockfd, F_GETFL, 0);
     if (flags == -1) {
         return -1;
@@ -77,3 +80,5 @@ private:
     // Poll
     std::vector<struct pollfd> pollFds_;
 };
+
+#endif // TCPSERVER_H
