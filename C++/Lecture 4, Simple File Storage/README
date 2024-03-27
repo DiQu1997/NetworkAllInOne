@@ -1,0 +1,22 @@
+This one serve as a demo of how to use TCP to build a file storage server that can store and retrieve files
+The whole project is to learn from simple to complex, so here I'm not directly using HTTP protocol but a customized protocol
+to show why do we need protocol like FTP or HTTP
+
+What we support here:
+Version 1:
+Get file from server: the request should be in following format:
+    GET "[FILENAME]"
+Response:
+    [STATUS_CODE] [FILE_CONTENT]
+    status code:
+        0: file found
+        1: file not found
+
+Store file to server: the request should be in following format:
+    STORE "[FILENAME]" [FILE_CONTENT]
+
+DELETE file from server: the request should be in following format:
+    DELETE "[FILENAME]"
+
+
+We add a "" to make sure the filename is correctly parsed, otherwise we won't have file name with space in it
