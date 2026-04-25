@@ -169,6 +169,7 @@ int TCPServer::server_poll() {
 }
 
 int TCPServer::server_epoll(const int max_events) {
+#ifdef __linux__
     set_socket_blocking(serverSocket_, false);
     struct sockaddr_in server_addr;
     int addrlen = sizeof(server_addr);
@@ -229,6 +230,11 @@ int TCPServer::server_epoll(const int max_events) {
             }
         }
     }
+#else
+    (void)max_events;
+    std::cerr << "epoll is only supported on Linux." << std::endl;
+    return -1;
+#endif
 }
 
 int TCPServer::server_send(int fd, const char* buffer, int length) {

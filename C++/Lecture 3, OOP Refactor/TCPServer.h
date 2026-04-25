@@ -9,7 +9,9 @@
 #include <fcntl.h>
 
 #include <poll.h>
+#ifdef __linux__
 #include <sys/epoll.h>
+#endif
 
 #ifndef TCPSERVER_H
 #define TCPSERVER_H
